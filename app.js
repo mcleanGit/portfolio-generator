@@ -1,4 +1,4 @@
-const profileDataArgs = process.argv.slice(2);
+/* const profileDataArgs = process.argv.slice(2);
 
 const printProfileData = profileDataArr => {
   // This...
@@ -13,3 +13,5 @@ const printProfileData = profileDataArr => {
 };
 
 printProfileData(profileDataArgs);
+*/
+const generatePage = () => 'Name: Don, Github: mcleanGit';
