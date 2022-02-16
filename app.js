@@ -1,23 +1,14 @@
-const profileDataArgs = process.argv.slice(2, process.argv.length);
+const fs = require('fs');
+
+const generatePage = require('./src/page-template.js');
+
+const profileDataArgs = process.argv.slice(2);
+
 const [Name, github] = profileDataArgs;
 
-console.log(Name, github);
-console.log(generatePage(Name, github));
+// note placement of console.log call after generatePage reworking above => shows the HTML Doc!; had to be fs line 1 and line 24
+fs.writeFile('index.html', generatePage(Name, github), err => {
+  if (err) throw new Error(err);
 
-const generatePage = (userName, githubName) => {
-  return `
- <!DOCTYPE html> 
- <html lang="en"> 
- <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Portfolio Demo</title>
- </head>
- <body>
-   <h1>${Name}</h1>
-   <h2><a href="https://github.com/${github}">Github</a></h2>
- </body>
- </html>
- `;
-};
+  console.log('Portfolio complete! Check out index.html to the output!');
+});
