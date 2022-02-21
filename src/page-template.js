@@ -1,5 +1,8 @@
 // page-template.js in src folder in portfolio-generator
-const generatePage = (Name, github) => {
+module.exports = templateData => {
+  console.log(templateData);
+// destructure projects and about data from templateData based on their property key names
+const { projects, about, ...header } = templateData;
   return `
  <!DOCTYPE html> 
  <html lang="en"> 
@@ -11,10 +14,9 @@ const generatePage = (Name, github) => {
  </head>
 
  <body>
-   <h1>${Name}</h1>
-   <h2><a href="https://github.com/${github}">Github</a></h2>
+   <h1>${templateData.name}</h1>
+   <h2><a href="https://github.com/${templateData.github}">Github</a></h2>
  </body>
  </html>
  `;
 };
-module.exports = generatePage;
